@@ -28,18 +28,18 @@ from scipy.optimize import brentq
 #        x=new_x
 #    return new_x[new_cross]
 #
-def zero_find(func,x,default=10.):
-    arr=np.array(map(func,x))
-    posneg=(arr<0)
-    crossings=np.diff(posneg).nonzero()
-    if len(crossings[0])>1:
+def zero_find(func, x, default=10.):
+    arr = np.array(map(func,x))
+    posneg = (arr<0)
+    crossings = np.diff(posneg).nonzero()
+    if len(crossings[0]) > 1:
         print 'multiple zeros',x[crossings[0]],'using: ',x[crossings[0][0]]
         mpl.plot(x,arr,'r--')
         mpl.show()
-    if len(crossings[0])<1:
-        old_x=x
+    if len(crossings[0]) < 1:
+        old_x = x
         for loop in xrange(4):
-            new_x=np.linspace(np.min(old_x),np.max(old_x),2*len(old_x))
+            new_x = np.linspace(np.min(old_x),np.max(old_x),2*len(old_x))
             arr=np.array(map(func,new_x))
             posneg=(arr<0)
             crossings=np.diff(posneg).nonzero()
